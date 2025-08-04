@@ -56,8 +56,8 @@ export function cityMatchesSearch(city: CityType, searchTerm: string): boolean {
     return false;
   }
   
-  const normalizedSearchTerm = normalizeTurkishText(searchTerm);
-  const normalizedCityName = normalizeTurkishText(city.name);
+  const normalizedSearchTerm = searchTerm.toLocaleLowerCase('tr-TR');
+  const normalizedCityName = city.name.toLocaleLowerCase('tr-TR');
   
   return normalizedCityName.startsWith(normalizedSearchTerm);
 }
