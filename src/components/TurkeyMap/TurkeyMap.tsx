@@ -4,7 +4,7 @@ import { cities as defaultCities, DEFAULT_VIEW_BOX, DEFAULT_CUSTOM_STYLE } from 
 import { cityMatchesSearch } from './searchUtils';
 import styles from './TurkeyMap.module.css';
 
-const TurkeyMap: React.FC<TurkeyMapProps> = ({
+const   TurkeyMap: React.FC<TurkeyMapProps> = ({
   viewBox = DEFAULT_VIEW_BOX,
   visible = true,
   hoverable = true,
@@ -77,7 +77,7 @@ const TurkeyMap: React.FC<TurkeyMapProps> = ({
             className={styles.cityLabel}
             textAnchor="middle"
             dominantBaseline="middle"
-            fontSize={12}
+            fontSize={city.fontSize || 10}
             fill="#333"
             fontWeight="600"
             pointerEvents="none"

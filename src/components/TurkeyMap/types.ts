@@ -5,6 +5,7 @@ export interface CityType {
   path: string;
   centerX?: number;
   centerY?: number;
+  fontSize?: number;
 }
 
 export interface CustomStyleType {
