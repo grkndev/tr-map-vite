@@ -1,0 +1,101 @@
+.turkeyMapContainer {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+}
+
+.turkeyMapSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+
+
+.cityGroup {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.cityPath {
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+.cityPath:hover,
+.cityPath.hovered {
+  filter: brightness(1.1);
+  transform-origin: center;
+}
+
+.cityGroup {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* This rule is now moved below for better organization */
+
+.cityGroup.highlighted {
+  z-index: 10;
+}
+
+.cityGroup.highlighted .cityPath {
+  stroke-width: 3;
+  /* filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)); */
+}
+
+.cityLabel {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  fill: #fff;
+  
+  /* text-shadow: 1px 1px 2px rgba(255,255,255,0.8); */
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+}
+
+.cityGroup.highlighted .cityLabel {
+  fill: #000000;
+}
+
+/* Search-specific highlighting */
+.cityGroup.searchHighlighted {
+  z-index: 15;
+}
+
+.cityGroup.searchHighlighted .cityPath {
+  stroke-width: 2.5;
+  /* Subtle pulse animation for search matches */
+  animation: searchPulse 2s ease-in-out infinite;
+}
+
+.cityGroup.searchHighlighted .cityLabel {
+  fill: #000000;
+  font-weight: 700;
+}
+
+/* Dimming for non-matching cities during search */
+.cityGroup.dimmed {
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Pulse animation for search matches */
+@keyframes searchPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Ensure search matches are visible even when dimmed */
+.cityGroup.searchHighlighted.dimmed {
+  opacity: 1;
+}
+
